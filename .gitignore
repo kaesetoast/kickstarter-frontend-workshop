@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+/sgc-core/
+.vscode
+.directory
+/static/css/
+SourceMaps
+.idea
+.DS_Store
+css
+modern-normalize.css
