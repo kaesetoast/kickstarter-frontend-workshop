@@ -7,5 +7,6 @@
 SourceMaps
 .idea
 .DS_Store
-css
+css/*
+!css/.gitkeep
 modern-normalize.css
