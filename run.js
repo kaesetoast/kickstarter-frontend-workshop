@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 
 const fs = require('fs');
+const util = require('util');
 const sass = require('sass');
 const gaze = require('gaze');
 const bs = require('browser-sync').create();
@@ -11,18 +12,25 @@ fs.copyFileSync('./node_modules/modern-normalize/modern-normalize.css', './css/m
 
 bs.init({
 	server: '.',
+	open: false,
 });
 
-function compile() {
-	sass.render({ file: './sass/main.scss' }, (error, result) => {
-		if (error) {
-			console.log(error);
-		}
-
-		fs.writeFileSync('./css/main.css', result.css);
-		console.log('Compiled Sass');
-		bs.reload('*.css');
-	});
+async function compile() {
+	const render = util.promisify(sass.render);
+	let compiledSass;
+	try {
+		compiledSass = await render({
+			file: './sass/main.scss',
+			sourceMapEmbed: true,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+	fs.writeFileSync('./css/main.css', compiledSass.css);
+	console.log('');
+	console.log('👌  Compiled Sass');
+	console.log('');
+	bs.reload('*.css');
 }
 
 compile();
