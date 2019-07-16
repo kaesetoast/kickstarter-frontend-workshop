@@ -35,7 +35,7 @@ async function compile() {
 
 compile();
 
-gaze('./sass/**/*.scss', (error, watcher) => {
+gaze('sass/**/*.scss', (error, watcher) => {
 	if (error) {
 		console.log(error);
 	}
@@ -44,7 +44,7 @@ gaze('./sass/**/*.scss', (error, watcher) => {
 	watcher.on('added', compile);
 });
 
-gaze('./js/**/*.js', (error, watcher) => {
+gaze('js/**/*.js', (error, watcher) => {
 	if (error) {
 		console.log(error);
 	}
