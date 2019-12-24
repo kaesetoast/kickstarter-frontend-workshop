@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "modern-normalize": "^0.5.0"
+    "modern-normalize": "^0.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
